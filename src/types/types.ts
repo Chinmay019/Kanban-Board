@@ -1,11 +1,11 @@
 export enum Status {
-    todo,
-    inProgress,
-    done
+    todo = "TODO",
+    inProgress = "INPROGRESS",
+    done = "DONE"
 
 } 
 
-export type task = {
+export type Task = {
     taskId : string,
     title : string,
     status : Status,
