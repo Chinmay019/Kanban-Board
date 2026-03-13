@@ -57,6 +57,23 @@
 .item-card {
     background-color: #fff;
     margin: 8px;
-    box-shadow: 0 0 1px 0 rgba(9, 33, 69, 0.31) , 0 2px 4px -1px rgba(9, 33, 69, 0.25);
+    box-shadow: 0 0 1px 0 rgba(9, 33, 69, 0.31), 0 2px 4px -1px rgba(9, 33, 69, 0.25);
     cursor: move;
+}
+
+.status-info {
+    text-transform: capitalize;
+    font-size: medium;
+    font-weight: 500;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    .TODO {
+
+    }
+
+    .INPROGRESS {}
+
+    .DONE {
+        text-decoration: red wavy line-through 2px;
+    }
 }

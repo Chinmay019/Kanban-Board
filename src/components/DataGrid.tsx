@@ -26,10 +26,14 @@ function DataGrid() {
           ))}
         </div>
         <div id='inProgressContainer' className='container flexWell'>
-          in progress container
+          {data.inProgress?.map((task) => (
+            <Item task={task} />
+          ))}
         </div>
         <div id='doneContainer' className='container flexWell'>
-          done container
+          {data.done?.map((task) => (
+            <Item task={task} />
+          ))}
         </div>
       </div>
     </div>
