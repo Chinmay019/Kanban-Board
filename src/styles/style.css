@@ -1,0 +1,30 @@
+.mainContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: #eeeeee;
+    padding-bottom: 10px;
+    overflow-x: auto;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 5%;
+    background-color: #fff;
+    flex-wrap: nowrap;
+}
+
+.flexWell {
+    display: flex;
+    min-height: 0;
+    min-width: 0;
+    flex: 1 0 200px;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.flex {
+    display: flex;
+}

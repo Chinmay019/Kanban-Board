@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
+import Sidebar from './Sidebar';
+import DataGrid from './DataGrid';
+import Detail from './Detail';
+import "./../styles/style.css"
 
 function KanbanBoard() {
     const [includeInProgress, SetIncludeInProgress] = useState(false);
-    const [columns, setColumns] = useState([]);
 
     return (
-        <div>
-
+        <div id="MainApp">
+            <Sidebar />
+            <DataGrid />
+            <Detail />
         </div>
     )
 }
