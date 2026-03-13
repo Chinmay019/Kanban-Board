@@ -1,22 +1,31 @@
-.mainContainer {
+.main-container {
     display: flex;
     flex-direction: row;
-    background-color: #eeeeee;
     padding-bottom: 10px;
     overflow-x: auto;
+    min-height: 90vh;
+    height: 100%;
+    background-color: #fff;
+}
+
+.main-grid {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 .container {
     padding-right: 15px;
     padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 5%;
-    background-color: #fff;
+    margin-right: 15px;
+    margin-left: 15px;
+    border-radius: 5px;
+    background-color: #eeeeee;
     flex-wrap: nowrap;
+    width: 250px;
 }
 
-.flexWell {
+.flex-well {
     display: flex;
     min-height: 0;
     min-width: 0;
@@ -27,4 +36,20 @@
 
 .flex {
     display: flex;
+}
+
+.sidebar-master {
+    display: flex;
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+    box-sizing: border-box;
+    border-radius: 5%;
+}
+
+.create-project {
+    min-width: 0;
+    max-width: 200px;
+    display: flex;
+    justify-content: center;
 }

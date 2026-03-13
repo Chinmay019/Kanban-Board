@@ -6,9 +6,13 @@ import "./../styles/style.css"
 
 function KanbanBoard() {
     const [includeInProgress, SetIncludeInProgress] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const toggleSidebarView = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    }
 
     return (
-        <div id="MainApp">
+        <div id="mainBoard" className="main-container">
             <Sidebar />
             <DataGrid />
             <Detail />

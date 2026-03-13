@@ -7,14 +7,16 @@ import { initialData } from '../store/initialState';
 function DataGrid() {
   return (
     <div id='dataGrid' className='flex'>
-      <div id='todoContainer' className='container flexWell'>
-        to - do container
-      </div>
-      <div id='inProgressContainer' className='container flexWell'>
-        in progress container
-      </div>
-      <div id='doneContainer' className='container flexWell'>
-        done container
+      <div className='main-grid'>
+        <div id='todoContainer' className='container flexWell'>
+          to - do container
+        </div>
+        <div id='inProgressContainer' className='container flexWell'>
+          in progress container
+        </div>
+        <div id='doneContainer' className='container flexWell'>
+          done container
+        </div>
       </div>
     </div>
   )
