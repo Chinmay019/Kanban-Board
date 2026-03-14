@@ -9,8 +9,8 @@ function Item({ task }: InputProps) {
   return (
     <div className='item-card'>
       <div className="status-info">
-        <span className={`text-xl font-semibold ${task.status}`}>{task.title}</span>
-        <p>{task.description}</p>
+        <span className={`text-xl py-5 pl-2 font-semibold ${task.status}`}>{task.title}</span>
+        <p className='italic pl-2 pt-2'>{task.description}</p>
       </div>
     </div>
   )
