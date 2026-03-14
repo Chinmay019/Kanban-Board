@@ -12,6 +12,7 @@ function KanbanBoard(props : KanbanBoardProps) {
     const showInProgress = props.showInProgress;
     const setShowInProgress = props.setShowInProgress;
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [projectsList, setProjectsList] = useState([]);
     const toggleSidebarView = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
@@ -19,7 +20,7 @@ function KanbanBoard(props : KanbanBoardProps) {
     return (
         <div id='wrapper' className='flex flex-col w-full h-screen'>
             <div id="mainBoard" className="main-container flex w-full">
-                <Sidebar />
+                <Sidebar projectsList={projectsList} setProjectsList={setProjectsList}/>
                 <DataGrid
                     showInProgress={showInProgress}
                     setShowInProgress={setShowInProgress}
