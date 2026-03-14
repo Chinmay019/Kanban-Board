@@ -20,17 +20,17 @@ function DataGrid() {
   return (
     <div id='dataGrid' className='flex'>
       <div className='main-grid'>
-        <div id='todoContainer' className='container flexWell'>
+        <div id='todoContainer' className='container flex-well'>
           {data.todo?.map((task) => (
             <Item task={task} />
           ))}
         </div>
-        <div id='inProgressContainer' className='container flexWell'>
+        <div id='inProgressContainer' className='container flex-well'>
           {data.inProgress?.map((task) => (
             <Item task={task} />
           ))}
         </div>
-        <div id='doneContainer' className='container flexWell'>
+        <div id='doneContainer' className='container flex-well'>
           {data.done?.map((task) => (
             <Item task={task} />
           ))}
