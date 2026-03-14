@@ -1,6 +1,5 @@
 .main-container {
     display: flex;
-    flex-direction: row;
     padding-bottom: 10px;
     overflow-x: auto;
     min-height: 90vh;
