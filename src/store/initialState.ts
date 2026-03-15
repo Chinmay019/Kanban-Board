@@ -1,8 +1,8 @@
-import type { task } from "../types/types";
+import type { Task } from "../types/types";
 import { Status } from "../types/types";
 
 
-export const initialData: task[] = [
+export const initialData: Task[] = [
   {
     taskId: "T001",
     title: "Design login page",
@@ -21,7 +21,7 @@ export const initialData: task[] = [
   {
     taskId: "T003",
     title: "Implement authentication",
-    status: Status.inProgress,
+    status: Status.inprogress,
     description: "Add JWT based authentication and login API.",
     createdOn: new Date("2026-03-09")
   },
@@ -35,7 +35,7 @@ export const initialData: task[] = [
   {
     taskId: "T005",
     title: "Write unit tests",
-    status: Status.inProgress,
+    status: Status.inprogress,
     description: "Add Jest tests for authentication and task services.",
     createdOn: new Date("2026-03-12")
   },

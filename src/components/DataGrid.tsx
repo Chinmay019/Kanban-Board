@@ -1,35 +1,18 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 // import { useReactTable, getCoreRowModel, flexRender, createColumnHelper } from '@tanstack/react-table'
-import type { Task } from '../types/types'
+import type { data, DataGridProps, Task } from '../types/types'
 import { Status } from '../types/types'
 import { initialData } from '../store/initialState';
-import Item from './Item';
-
-interface taskData {
-  todo: Task[] | null,
-  inProgress: Task[] | null,
-  done: Task[] | null
-}
-
-interface DataGridProps {
-  setShowInProgress: any,
-  showInProgress: any
-}
-
-interface columnData {
-  header: string,
-  id: number,
-  htmlID: string,
-  className: string,
-  status: string
-}
+import { DragDropProvider } from '@dnd-kit/react';
+import TaskList from './TaskList';
 
 function DataGrid(props: DataGridProps) {
-  const [data, setData] = useState<taskData>({
-    todo: initialData.filter((task) => task.status == Status.todo),
-    inProgress: initialData.filter((task) => task.status == Status.inProgress),
-    done: initialData.filter((task) => task.status == Status.done)
+  const [data, setData] = useState<data>({
+    todo: initialData.filter((task) => task.status == Status.todo) || [],
+    inprogress: initialData.filter((task) => task.status == Status.inprogress) || [],
+    done: initialData.filter((task) => task.status == Status.done) || []
   });
+
   const initialColumns = [{
     header: "TO DO",
     id: 1,
@@ -56,7 +39,7 @@ function DataGrid(props: DataGridProps) {
     id: 2,
     htmlID: "inProgressContainer",
     className: "container flex-well",
-    status: "inProgress"
+    status: "inprogress"
   },
   {
     header: "DONE",
@@ -75,21 +58,65 @@ function DataGrid(props: DataGridProps) {
     }
   }, [props.showInProgress]);
 
+  function handleDragEnd(event: any) {
+    const { operation, canceled } = event;
+    const { source, target } = operation;
+    if (!operation) {
+      console.log("no operation ");
+      return;
+    }
+    if (canceled) {
+      console.log("operation canceled");
+      return;
+    }
+
+    if (!target) {
+      console.log("dropped outside droppable");
+      return;
+    }
+
+    const taskId = source.id;
+    const task :Task = source.data.element;
+    const sourceColumn = source.data.column;
+    const targetStatus = target.id;
+
+    setData((prev) => {
+      // update source Column
+      const updatedSource = prev[sourceColumn].filter((t : Task) => t.taskId != taskId)
+
+      //update target column
+      const targetColumn : Task[] = [
+        ...prev[targetStatus], {
+          ...task,
+          status : targetStatus
+        }
+      ]
+      return {
+        ...prev,
+        [sourceColumn] : updatedSource,
+        [targetStatus] : targetColumn
+      }
+    });
+  }
+
   return (
     <div id='dataGrid' className='flex'>
-      <div className='main-grid'>
-        {columns.map((col) => {
-          return (
-            <div id={`${col.htmlID}`} className={`${col.className}`}>
-              <h2 className='text-lg font-bold'>{col.header}</h2>
-              {data[col.status as keyof taskData]?.map((item: Task) => (
-                <Item task={item} />
-              ))}
-            </div>
-          )
-        })}
-      </div>
-    </div>
+      <DragDropProvider
+        onDragStart={(event, manager) => {
+          const { operation } = event;
+          console.log(`started dragging ${operation?.source.id}`)
+        }}
+        onDragEnd={handleDragEnd}
+      >
+        <div className='main-grid'>
+          {columns.map((col) => {
+            return (
+              <TaskList data={data} column={col} key={col.id} />
+            )
+          })}
+        </div>
+      </DragDropProvider >
+    </div >
   )
 }
 
