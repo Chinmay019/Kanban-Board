@@ -18,9 +18,10 @@ interface DataGridProps {
 
 interface columnData {
   header: string,
-  id: string,
+  id: number,
+  htmlID: string,
   className: string,
-  attribute: string
+  status: string
 }
 
 function DataGrid(props: DataGridProps) {
@@ -31,33 +32,38 @@ function DataGrid(props: DataGridProps) {
   });
   const initialColumns = [{
     header: "TO DO",
-    id: "todoContainer",
+    id: 1,
+    htmlID: "todoContainer",
     className: "container flex-well",
-    attribute: "todo"
+    status: "todo"
   },
   {
     header: "DONE",
-    id: "doneContainer",
+    id: 3,
+    htmlID: "doneContainer",
     className: "container flex-well",
-    attribute: "done"
+    status: "done"
   }];
   const allColumns = [{
     header: "TO DO",
-    id: "todoContainer",
+    id: 1,
+    htmlID: "todoContainer",
     className: "container flex-well",
-    attribute: "todo"
+    status: "todo"
   },
   {
     header: "IN PROGRESS",
-    id: "inProgressContainer",
+    id: 2,
+    htmlID: "inProgressContainer",
     className: "container flex-well",
-    attribute: "inProgress"
+    status: "inProgress"
   },
   {
     header: "DONE",
-    id: "doneContainer",
+    id: 3,
+    htmlID: "doneContainer",
     className: "container flex-well",
-    attribute: "done"
+    status: "done"
   }];
   const [columns, setColumns] = useState(initialColumns);
 
@@ -74,9 +80,9 @@ function DataGrid(props: DataGridProps) {
       <div className='main-grid'>
         {columns.map((col) => {
           return (
-            <div id={`${col.id}`} className={`${col.className}`}>
+            <div id={`${col.htmlID}`} className={`${col.className}`}>
               <h2 className='text-lg font-bold'>{col.header}</h2>
-              {data[col.attribute as keyof taskData]?.map((item: Task) => (
+              {data[col.status as keyof taskData]?.map((item: Task) => (
                 <Item task={item} />
               ))}
             </div>

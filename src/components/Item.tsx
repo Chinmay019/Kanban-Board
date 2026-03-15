@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Task } from '../types/types'
+import { useDraggable } from '@dnd-kit/react'
 
 interface InputProps {
   task: Task
